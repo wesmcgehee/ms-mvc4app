@@ -11,3 +11,5 @@ git remote set-url origin https://github.com/wesmcgehee/ms-mvc4app.git
 git commit -m "message"
 --- to create original: git remote add origin https://github.com/wesmcgehee/ms-mvc4app.git
 git push -u origin master
+
+git push --force origin master (if rejected and certain of commiting master code)
