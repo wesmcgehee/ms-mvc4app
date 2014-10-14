@@ -1,6 +1,13 @@
+user commits ect are according to user.email
+git config user.email "wesley.mcgehee.com"  (for wesmcgehee)
+git config user.email "dukeofaustintx.com"  (for dukeofaustin)
+
+
 touch README.md
 git init
 git add README.md
-git commit -m "first commit"
-git remote add origin https://github.com/dukeofaustin/ms-mvc4app.git
+git git add README.md
+git remote set-url origin https://github.com/wesmcgehee/ms-mvc4app.git
+git commit -m "message"
+--- to create original: git remote add origin https://github.com/wesmcgehee/ms-mvc4app.git
 git push -u origin master
