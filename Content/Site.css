@@ -42,9 +42,8 @@ mark {
     padding-left: 5px;
     padding-right: 5px;
 }
-
 .mylogo {
-    background: url('../images/mvcprototypetitle.bmp') no-repeat; /* center right; */
+    background: url('../images/mvcprototypetitle.bmp') no-repeat center right; 
     display: block; 
     height: 84px; 
     width: 264px;
@@ -113,15 +112,14 @@ h5, h6 {
 }
 
     .main-content {
-        /*background: url("../Images/accent.png") no-repeat; */
+        background: url("../Images/accent.png") no-repeat;
         padding-left: 10px;
         padding-top: 30px;
     }
-    /*
+
     .featured + .main-content {
         background: url("../Images/heroAccent.png") no-repeat;
     }
-    */
 
 header .content-wrapper {
     padding-top: 20px; 

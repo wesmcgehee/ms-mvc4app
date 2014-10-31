@@ -6,8 +6,23 @@
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
+        @Styles.Render("~/Content/themes")
+   <link href="/Content/themes/jquery-ui-1.11.1.custom/jquery-ui.structure.min.css" rel="stylesheet"/>
+   <link href="/Content/themes/jquery-ui-1.11.1.custom/jquery-ui.theme.min.css"  rel="stylesheet"/>
         @Scripts.Render("~/bundles/modernizr")
-    </head>
+        @Scripts.Render("~/bundles/jquery")
+
+        @Scripts.Render("~/bundles/jqueryui")      
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/jquerycus")
+    <script src="@Url.Content("~/Scripts/Custom.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#tabs").tabmenu();
+        });
+    </script>
+
+  </head>
     <body>
         <header>
             <div class="content-wrapper">
@@ -18,13 +33,18 @@
                     <section id="login">
                         @Html.Partial("_LoginPartial")
                     </section>
+                   
                     <nav>
+                         <div id="tabs">
                         <ul id="menu">
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Users", "Index", "SiteUser")</li>
                             <li>@Html.ActionLink("About", "About", "Home")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         </ul>
-                    </nav>
+                             </div>
+                    </nav> 
+
                 </div>
             </div>
         </header>
@@ -40,7 +60,12 @@
             </div>
         </footer>
 
-        @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)
+
+
+        @if (IsSectionDefined("Scripts"))
+        {
+           RenderSection("Scripts", false);
+        }
+      
     </body>
 </html>

@@ -1,0 +1,74 @@
+﻿@using Mvc4App.Custom
+
+@model Mvc4App.Models.SiteAppUser
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>SiteAppUser</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UniqId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UniqId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AppVer)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AppVer)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Fname)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Fname)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Lname)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Lname)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Secure)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Secure)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Custom)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Custom)
+    </div>
+</fieldset>
+<p>
+    @Html.DialogFormLink("Update", Url.Action("Show", new { id = Model.UserId }),"Edit This","SiteUserContainer", Url.Action("Index")) |
+    <!-- @Html.ActionLink("Edit", "Edit", new { id = Model.UserId }) | -->
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dukeofaustinModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="dukeofaustinModelStoreContainer">
+          <EntitySet Name="lsttbl_Group" EntityType="dukeofaustinModel.Store.lsttbl_Group" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="lsttbl_Item" EntityType="dukeofaustinModel.Store.lsttbl_Item" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="lsttbl_Lists" EntityType="dukeofaustinModel.Store.lsttbl_Lists" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="lsttbl_Type" EntityType="dukeofaustinModel.Store.lsttbl_Type" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SiteAppUser" EntityType="dukeofaustinModel.Store.SiteAppUser" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="GroupLink" Association="dukeofaustinModel.Store.GroupLink">
+            <End Role="lsttbl_Group" EntitySet="lsttbl_Group" />
+            <End Role="lsttbl_Item" EntitySet="lsttbl_Item" />
+          </AssociationSet>
+          <AssociationSet Name="lsttbl_Group_FK00" Association="dukeofaustinModel.Store.lsttbl_Group_FK00">
+            <End Role="lsttbl_Type" EntitySet="lsttbl_Type" />
+            <End Role="lsttbl_Group" EntitySet="lsttbl_Group" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="lsttbl_Group">
+          <Key>
+            <PropertyRef Name="GrpId" />
+          </Key>
+          <Property Name="GrpId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TypeId" Type="int" />
+          <Property Name="Descrip" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="lsttbl_Item">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GrpId" Type="int" Nullable="false" />
+          <Property Name="Descrip" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="lsttbl_Lists">
+          <Key>
+            <PropertyRef Name="RecId" />
+          </Key>
+          <Property Name="RecId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="GrpId" Type="int" />
+          <Property Name="IdStr" Type="nvarchar" MaxLength="255" />
+          <Property Name="Audit" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="lsttbl_Type">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descrip" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="SiteAppUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UniqId" Type="varchar" MaxLength="50" />
+          <Property Name="AppVer" Type="nchar" MaxLength="10" />
+          <Property Name="Email" Type="nvarchar" MaxLength="80" />
+          <Property Name="Fname" Type="nchar" MaxLength="30" />
+          <Property Name="Lname" Type="nchar" MaxLength="30" />
+          <Property Name="Secure" Type="nchar" MaxLength="20" />
+          <Property Name="Custom" Type="nchar" MaxLength="50" />
+          <Property Name="Audit" Type="nchar" MaxLength="50" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <Association Name="GroupLink">
+          <End Role="lsttbl_Group" Type="dukeofaustinModel.Store.lsttbl_Group" Multiplicity="1" />
+          <End Role="lsttbl_Item" Type="dukeofaustinModel.Store.lsttbl_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lsttbl_Group">
+              <PropertyRef Name="GrpId" />
+            </Principal>
+            <Dependent Role="lsttbl_Item">
+              <PropertyRef Name="GrpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="lsttbl_Group_FK00">
+          <End Role="lsttbl_Type" Type="dukeofaustinModel.Store.lsttbl_Type" Multiplicity="0..1" />
+          <End Role="lsttbl_Group" Type="dukeofaustinModel.Store.lsttbl_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lsttbl_Type">
+              <PropertyRef Name="TypeId" />
+            </Principal>
+            <Dependent Role="lsttbl_Group">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dukeofaustinModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="dukeofaustinEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="lsttbl_Group" EntityType="dukeofaustinModel.lsttbl_Group" />
+          <EntitySet Name="lsttbl_Item" EntityType="dukeofaustinModel.lsttbl_Item" />
+          <EntitySet Name="lsttbl_Lists" EntityType="dukeofaustinModel.lsttbl_Lists" />
+          <EntitySet Name="lsttbl_Type" EntityType="dukeofaustinModel.lsttbl_Type" />
+          <EntitySet Name="SiteAppUsers" EntityType="dukeofaustinModel.SiteAppUser" />
+          <AssociationSet Name="lsttbl_Group_FK00" Association="dukeofaustinModel.lsttbl_Group_FK00">
+            <End Role="lsttbl_Type" EntitySet="lsttbl_Type" />
+            <End Role="lsttbl_Group" EntitySet="lsttbl_Group" />
+          </AssociationSet>
+          <AssociationSet Name="GroupLink" Association="dukeofaustinModel.GroupLink">
+            <End Role="lsttbl_Group" EntitySet="lsttbl_Group" />
+            <End Role="lsttbl_Item" EntitySet="lsttbl_Item" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="lsttbl_Group">
+          <Key>
+            <PropertyRef Name="GrpId" />
+          </Key>
+          <Property Name="GrpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeId" Type="Int32" />
+          <Property Name="Descrip" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="lsttbl_Type" Relationship="dukeofaustinModel.lsttbl_Group_FK00" FromRole="lsttbl_Group" ToRole="lsttbl_Type" />
+          <NavigationProperty Name="lsttbl_Item" Relationship="dukeofaustinModel.GroupLink" FromRole="lsttbl_Group" ToRole="lsttbl_Item" />
+        </EntityType>
+        <EntityType Name="lsttbl_Item">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GrpId" Type="Int32" Nullable="false" />
+          <Property Name="Descrip" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="lsttbl_Group" Relationship="dukeofaustinModel.GroupLink" FromRole="lsttbl_Item" ToRole="lsttbl_Group" />
+        </EntityType>
+        <EntityType Name="lsttbl_Lists">
+          <Key>
+            <PropertyRef Name="RecId" />
+          </Key>
+          <Property Name="RecId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="GrpId" Type="Int32" />
+          <Property Name="IdStr" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Audit" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="lsttbl_Type">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descrip" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="lsttbl_Group" Relationship="dukeofaustinModel.lsttbl_Group_FK00" FromRole="lsttbl_Type" ToRole="lsttbl_Group" />
+        </EntityType>
+        <EntityType Name="SiteAppUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UniqId" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="AppVer" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Email" Type="String" MaxLength="80" Unicode="true" FixedLength="false" />
+          <Property Name="Fname" Type="String" MaxLength="30" Unicode="true" FixedLength="true" />
+          <Property Name="Lname" Type="String" MaxLength="30" Unicode="true" FixedLength="true" />
+          <Property Name="Secure" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+          <Property Name="Custom" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+          <Property Name="Audit" Type="String" annotation:StoreGeneratedPattern="Computed" MaxLength="50" Unicode="true" FixedLength="true" />
+        </EntityType>
+        <Association Name="lsttbl_Group_FK00">
+          <End Role="lsttbl_Type" Type="dukeofaustinModel.lsttbl_Type" Multiplicity="0..1" />
+          <End Role="lsttbl_Group" Type="dukeofaustinModel.lsttbl_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lsttbl_Type">
+              <PropertyRef Name="TypeId" />
+            </Principal>
+            <Dependent Role="lsttbl_Group">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GroupLink">
+          <End Type="dukeofaustinModel.lsttbl_Group" Role="lsttbl_Group" Multiplicity="1" />
+          <End Type="dukeofaustinModel.lsttbl_Item" Role="lsttbl_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lsttbl_Group">
+              <PropertyRef Name="GrpId" />
+            </Principal>
+            <Dependent Role="lsttbl_Item">
+              <PropertyRef Name="GrpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dukeofaustinModelStoreContainer" CdmEntityContainer="dukeofaustinEntities">
+          <EntitySetMapping Name="lsttbl_Group">
+            <EntityTypeMapping TypeName="dukeofaustinModel.lsttbl_Group">
+              <MappingFragment StoreEntitySet="lsttbl_Group">
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="Descrip" ColumnName="Descrip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lsttbl_Item">
+            <EntityTypeMapping TypeName="dukeofaustinModel.lsttbl_Item">
+              <MappingFragment StoreEntitySet="lsttbl_Item">
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="Descrip" ColumnName="Descrip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lsttbl_Lists">
+            <EntityTypeMapping TypeName="dukeofaustinModel.lsttbl_Lists">
+              <MappingFragment StoreEntitySet="lsttbl_Lists">
+                <ScalarProperty Name="RecId" ColumnName="RecId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="IdStr" ColumnName="IdStr" />
+                <ScalarProperty Name="Audit" ColumnName="Audit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lsttbl_Type">
+            <EntityTypeMapping TypeName="dukeofaustinModel.lsttbl_Type">
+              <MappingFragment StoreEntitySet="lsttbl_Type">
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="Descrip" ColumnName="Descrip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SiteAppUsers">
+            <EntityTypeMapping TypeName="dukeofaustinModel.SiteAppUser">
+              <MappingFragment StoreEntitySet="SiteAppUser">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UniqId" ColumnName="UniqId" />
+                <ScalarProperty Name="AppVer" ColumnName="AppVer" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="Secure" ColumnName="Secure" />
+                <ScalarProperty Name="Custom" ColumnName="Custom" />
+                <ScalarProperty Name="Audit" ColumnName="Audit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

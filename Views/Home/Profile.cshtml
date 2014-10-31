@@ -1,0 +1,27 @@
+﻿@using Mvc4App.Utilities.MvcHelpers
+ 
+@model Mvc4App.Models.Profile
+ 
+<fieldset>
+    <legend>Contact Info</legend>
+     
+    <div class="display-field">
+        Name: @Html.DisplayFor(model => model.Name)
+    </div>
+ 
+    <div class="display-field">
+        Nick name: @Html.DisplayFor(model => model.NickName)
+    </div>
+     
+    <div class="display-field">
+        Email: @Html.DisplayFor(model => model.Email)
+    </div>
+     
+    <div class="display-field">
+        Age: @Html.DisplayFor(model => model.Age)
+    </div>
+ 
+    <div class="right">
+        @Html.DialogFormLink("Edit", Url.Action("EditProfile"), "Edit Profile", "ProfileContainer", Url.Action("Profile"))
+    </div>
+</fieldset>

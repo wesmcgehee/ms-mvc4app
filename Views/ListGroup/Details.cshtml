@@ -1,0 +1,36 @@
+﻿@model Mvc4App.Models.lsttbl_Group
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>lsttbl_Group</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GrpId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GrpId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lsttbl_Type.Descrip)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lsttbl_Type.Descrip)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Descrip)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Descrip)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

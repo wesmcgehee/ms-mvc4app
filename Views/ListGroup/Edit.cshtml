@@ -1,0 +1,52 @@
+﻿@model Mvc4App.Models.lsttbl_Group
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>lsttbl_Group</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GrpId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GrpId)
+            @Html.ValidationMessageFor(model => model.GrpId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TypeId, "lsttbl_Type")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("TypeId", String.Empty)
+            @Html.ValidationMessageFor(model => model.TypeId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Descrip)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Descrip)
+            @Html.ValidationMessageFor(model => model.Descrip)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
